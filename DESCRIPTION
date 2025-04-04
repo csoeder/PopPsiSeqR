@@ -1,0 +1,37 @@
+Package: PopPsiSeqR
+Type: Package
+Title: Process and Visualize Evolve & Resequence Experiments
+Version: 0.1.0
+Date: 2025-04-01
+Authors@R: 
+    person("Charles", "Soeder", , "csoeder@email.unc.edu", role = c("aut", "cre"))
+Description: Handles data from evolve and resequence experiments. 
+    Measured allele frequencies (eg, from variants called from hight-throughput 
+    sequencing data) are compared using an update of the PsiSeq algorithm. 
+    Functions for saving and loading important files are also included, as well 
+    as functions for basic data visiualization. 
+URL: https://github.com/csoeder/PopPsiSeq, https://github.com/csoeder/PopPsiSeqR
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+Imports:
+    rtracklayer,
+    GenomicRanges,
+    ggplot2,
+    dplyr,
+    S4Vectors,
+    magrittr,
+    ggbio,
+    withr,
+    utils,
+    patchwork,
+    tidyr,
+    rlang,
+    devtools
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
