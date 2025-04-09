@@ -4,12 +4,12 @@ Title: Process and Visualize Evolve & Resequence Experiments
 Version: 0.1.0
 Date: 2025-04-01
 Authors@R: 
-    person("Charles", "Soeder", , "csoeder@email.unc.edu", role = c("aut", "cre"))
-Description: Handles data from evolve and resequence experiments. 
-    Measured allele frequencies (eg, from variants called from hight-throughput 
+    person("Charles", "Soeder", , "csoeder@email.unc.edu", role = c("aut", "cre", "cph"))
+Description: Handle data from evolve and resequence experiments. 
+    Measured allele frequencies (e.g., from variants called from high-throughput 
     sequencing data) are compared using an update of the PsiSeq algorithm. 
     Functions for saving and loading important files are also included, as well 
-    as functions for basic data visiualization. 
+    as functions for basic data visualization. 
 URL: https://github.com/csoeder/PopPsiSeq, https://github.com/csoeder/PopPsiSeqR
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -35,3 +35,4 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
+BugReports: https://github.com/csoeder/PopPsiSeqR/issues

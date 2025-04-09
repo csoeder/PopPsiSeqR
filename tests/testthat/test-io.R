@@ -16,8 +16,10 @@ test_that("shifted frequencies can be saved",{
   shift_frequencies.filename <-  withr::local_tempfile(pattern = "shiftWriteTest-")
   expect_no_error(PopPsiSeqR::export.freqshft(shift2save,shift_frequencies.filename))
 
-  correct_hash = "e37492c5b6b3396449ec70e2ae27862a"
-  expect_equal(correct_hash, tools::md5sum(shift_frequencies.filename)[[1]])
+  #correct_hash = "e37492c5b6b3396449ec70e2ae27862a"
+  #expect_equal(correct_hash, tools::md5sum(shift_frequencies.filename)[[1]])
+  correct_hashes = c("e37492c5b6b3396449ec70e2ae27862a","8f3feb89facba1da64e34533b8a0b618") # windows compatibility
+  expect_contains(correct_hashes, tools::md5sum(shift_frequencies.filename)[[1]])
 
 })
 

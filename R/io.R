@@ -42,13 +42,21 @@ import.freqtbl <- function(freqtbl_filename) {
 #'
 #' @param frequency_shifts table of allele frequency shifts, as output by freqShifter()
 #' @param output_file path to savefile
+#' @return nothing
 #' @export
+#' @examples
+#' merged_frequencies.filename <- system.file("extdata",
+#' "merged_frequencies.example_data.tbl", package = "PopPsiSeqR")
+#' frequencies.bg <- import.freqtbl(merged_frequencies.filename)
+#' frequency_shifts.bg <- freqShifter(frequencies.bg)
+#' export.freqshft(frequency_shifts.bg , tempfile())
+#'
 export.freqshft <- function( frequency_shifts, output_file) {
   #options(scipen=999)
   withr::local_options(scipen=999)
   frequency_shifts.df <- frequency_shifts %>% rtracklayer::as.data.frame() %>% dplyr::select(c("seqnames","start","end","name","score","strand","ref","alt","selected_parent_count","selected_parent_alt_af","backcrossed_parent_count","backcrossed_parent_alt_af","offspring_count","offspring_alt_af","backcrossed_parent_introg_deltaF","selected_parent_depletion_deltaF","mean_oriented_shift", "max_oriented_shift", "min_oriented_shift", "AF_difference"))
   utils::write.table(frequency_shifts.df, file=output_file, quote=F, sep="\t", row.names=F)
-
+  invisible(NULL)
 }
 
 
@@ -58,7 +66,7 @@ export.freqshft <- function( frequency_shifts, output_file) {
 #'
 #'
 #' @param filename file containing the allele frequencies as an extended BED6+ file; see vignette for formatting
-#' @param selected_parent name of the First Parent (that which is selected for)
+#' @param selected_parent name of the First Parent (that which is Selected for)
 #' @param backcrossed_parent name of the Second Parent (that which is Backcrossed to)
 #' @return loaded data as a bedgraph
 #' @export

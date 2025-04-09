@@ -6,18 +6,19 @@
 \alias{PopPsiSeqR-package}
 \title{PopPsiSeqR: Process and Visualize Evolve & Resequence Experiments}
 \description{
-Handles data from evolve and resequence experiments. Measured allele frequencies (eg, from variants called from hight-throughput sequencing data) are compared using an update of the PsiSeq algorithm. Functions for saving and loading important files are also included, as well as functions for basic data visiualization.
+Handle data from evolve and resequence experiments. Measured allele frequencies (e.g., from variants called from high-throughput sequencing data) are compared using an update of the PsiSeq algorithm. Functions for saving and loading important files are also included, as well as functions for basic data visualization.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/csoeder/PopPsiSeq}
   \item \url{https://github.com/csoeder/PopPsiSeqR}
+  \item Report bugs at \url{https://github.com/csoeder/PopPsiSeqR/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Charles Soeder \email{csoeder@email.unc.edu}
+\strong{Maintainer}: Charles Soeder \email{csoeder@email.unc.edu} [copyright holder]
 
 }
 \keyword{internal}

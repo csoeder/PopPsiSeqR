@@ -29,6 +29,3 @@ GRanges of the difference
 \description{
 Subtractor
 }
-\examples{
-print("under construction...")
-}

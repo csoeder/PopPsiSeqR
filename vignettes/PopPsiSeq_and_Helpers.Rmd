@@ -66,7 +66,7 @@ In this vignette we will start with an example dataset, in which allele frequenc
 
 -   a Drosophila simulans population, constructed from sequenced lab strains downloaded from NCBI; this was treated as a parental population
 
--   a Drosophila sechellia population, constructed from sequenced wild and lab strains downloaded from NCBI; this was treated as a parental population; for some examples these flies will be subdivided by strain source. 
+-   a Drosophila sechellia population, constructed from sequenced wild and lab strains downloaded from NCBI; this was treated as a parental population; for some examples these flies will be subdivided by strain source.
 
 -   an offspring population from evolve & resequence experiments, in which simulans/sechellia hybrids were repeatedly backrossed to sechellia while selecting for simulans-like traits ( \@Earley2011 and unpublished followup experiments)
 
@@ -78,12 +78,12 @@ bedtools intersect -wa -wb -a {input.par1_frq} -b  {input.par2_frq} \
   > {output.frqShft_out}.pre
 ```
 
-The *{input.\*\_frq}* files are the BEDfile-ification of the VCFtools allele frequency utility:
+The *{input.\*\_frq}* files are the BEDfile-ification () of the VCFtools (@Danecek2011) allele frequency utility:
 
 ```{bash include=TRUE, echo = T, eval=F}
 
 vcftools --vcf {input.vcf_in} --out {output.report_out} --freq;
-cat {output.report_out}.frq | tail -n +2 | awk -v OFS='\\t' '{{print $1,$2,$2+1,$4,$5,$6}}'`
+cat {output.report_out}.frq | tail -n +2 | awk -v OFS='\\t' '{{print $1,$2,$2+1,$4,$5,$6}}'
 
 ```
 
@@ -251,7 +251,7 @@ autoplot(frequency_shifts.bg , aes(y = sign(selected_parent_alt_af-backcrossed_p
 These site-wise data can then be saved to disk for additional processing or future reference with the **`export.freqshft()`** utility
 
 ```{r, include=TRUE, echo=TRUE, eval=TRUE}
-export.freqshft(frequency_shifts.bg ,"/dev/null")
+export.freqshft(frequency_shifts.bg , tempfile())
 ```
 
 # Smoothing by Window
@@ -282,9 +282,10 @@ Other windowing schemes are possible. For example, the original @Earley2011 work
 ```{bash, include=FALSE, eval=F}
 mkdir -p ../exec/python/
 curl https://raw.githubusercontent.com/csoeder/PopPsiSeq/refs/heads/master/scripts/bin_by_SNPs.py > ../exec/python/bin_by_SNPs.py
+
 ```
 
-```{bash, echo = TRUE, include=TRUE, eval=TRUE}
+```{bash, echo = TRUE, include=TRUE, eval=F}
 python3 ../exec/python/bin_by_SNPs.py --help
 ```
 
@@ -388,7 +389,7 @@ autoplot(sub.traction, aes(y=lab_minus_wild), geom="line"
 
 Since the **`subTractor()`** requires the same intervals to be present in both data sets, it can't be used for data which have been smoothed with inconsistent windowing schemes. For example, the constant-SNP count windows produced by the **`bin_by_SNPs.py`** utility will depend on the variant dataset used, which may change between compared cases.
 
-One way to circumvent this problem is to calculate the differences on a per-site basis, write these as a BED file, then using the binning script on these sites. The subtraction step involves an inner join between the two frequency shift tables; the sites binned in this case are therefor those sites common to both tables. 
+One way to circumvent this problem is to calculate the differences on a per-site basis, write these as a BED file, then using the binning script on these sites. The subtraction step involves an inner join between the two frequency shift tables; the sites binned in this case are therefor those sites common to both tables.
 
 ```{bash include=TRUE, echo=T, eval=F}
 wild_shifts=data/intermediate/freq_shift/freebayes/all2.cleanEarleyAll_with_allSim2_and_wildSech.vs_droSim1.bwaUniq.frqShift.pre
@@ -404,7 +405,6 @@ bedtools intersect -wa -a $lab_shifts  -b <( echo -e "chr2L\t12400000\t12600000"
 
 
 ```
-
 
 ```{r include=TRUE, echo=TRUE, eval=TRUE}
 
@@ -430,7 +430,7 @@ fine_subtraction.df <- fine_subtraction.bg %>% as.data.frame() %>%
   mutate(name = n(), score = 0) %>% select(
     c("seqnames","start","end","name","score","strand", "lab_minus_wild") ) 
 
-write.table(fine_subtraction.df, file="/dev/null", quote=F, 
+write.table(fine_subtraction.df, file=tempfile(), quote=F, 
   sep="\t", row.names=F, col.names = F)
 
 ```
@@ -443,7 +443,3 @@ python3 ../exec/python/bin_by_SNPs.py  -i $difference_bedfile \
 ```
 
 # Bibliography
-
-
-
-

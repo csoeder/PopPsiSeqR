@@ -10,7 +10,7 @@
 #' @param envelope_aesthetic envelope aesthetic
 #' @param ancestral_aesthetic ancestral aesthetic
 #'
-#' @return a ggbio plot
+#' @return a ggbio plot object
 #' @export
 #'
 #' @examples

@@ -36,7 +36,7 @@ windowedFrequencyShift.plotter(
 \item{ancestral_aesthetic}{ancestral aesthetic}
 }
 \value{
-a ggbio plot
+a ggbio plot object
 }
 \description{
 Data displayer

@@ -9,7 +9,7 @@ import.smvshift(filename, selected_parent = "sim", backcrossed_parent = "sec")
 \arguments{
 \item{filename}{file containing the allele frequencies as an extended BED6+ file; see vignette for formatting}
 
-\item{selected_parent}{name of the First Parent (that which is selected for)}
+\item{selected_parent}{name of the First Parent (that which is Selected for)}
 
 \item{backcrossed_parent}{name of the Second Parent (that which is Backcrossed to)}
 }

@@ -11,6 +11,17 @@ export.freqshft(frequency_shifts, output_file)
 
 \item{output_file}{path to savefile}
 }
+\value{
+nothing
+}
 \description{
 Save the shifted frequencies
+}
+\examples{
+merged_frequencies.filename <- system.file("extdata",
+"merged_frequencies.example_data.tbl", package = "PopPsiSeqR")
+frequencies.bg <- import.freqtbl(merged_frequencies.filename)
+frequency_shifts.bg <- freqShifter(frequencies.bg)
+export.freqshft(frequency_shifts.bg , tempfile())
+
 }
