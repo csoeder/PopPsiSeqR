@@ -1,7 +1,7 @@
 Package: PopPsiSeqR
 Type: Package
 Title: Process and Visualize Evolve & Resequence Experiments
-Version: 0.1.0
+Version: 1.0.0
 Date: 2025-04-01
 Authors@R: 
     person("Charles", "Soeder", , "csoeder@email.unc.edu", role = c("aut", "cre", "cph"))

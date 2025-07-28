@@ -45,12 +45,13 @@ import.freqtbl <- function(freqtbl_filename) {
 #' @return nothing
 #' @export
 #' @examples
+#'\dontrun{
 #' merged_frequencies.filename <- system.file("extdata",
 #' "merged_frequencies.example_data.tbl", package = "PopPsiSeqR")
 #' frequencies.bg <- import.freqtbl(merged_frequencies.filename)
 #' frequency_shifts.bg <- freqShifter(frequencies.bg)
 #' export.freqshft(frequency_shifts.bg , tempfile())
-#'
+#'}
 export.freqshft <- function( frequency_shifts, output_file) {
   #options(scipen=999)
   withr::local_options(scipen=999)

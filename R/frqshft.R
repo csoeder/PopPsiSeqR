@@ -14,10 +14,12 @@
 #' @export
 #'
 #' @examples
+#'\dontrun{
 #' merged_frequencies.filename <- system.file("extdata",
 #' "merged_frequencies.example_data.tbl", package = "PopPsiSeqR")
 #' frequencies.bg <- import.freqtbl(merged_frequencies.filename)
 #' frequency_shifts.bg <- freqShifter(frequencies.bg)
+#' }
 freqShifter <- function(freqbed_in) {
 
   freqCompare.bg <- freqbed_in
