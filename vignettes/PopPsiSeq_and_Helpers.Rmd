@@ -3,7 +3,6 @@ title: "PopPsiSeq and Helper Functions"
 output: 
   pdf_document: 
     toc: true
-    latex_engine: xelatex
   html_document: rmarkdown::html_vignette
 bibliography: references.bib
 vignette: >
@@ -68,7 +67,7 @@ In this vignette we will start with an example dataset, in which allele frequenc
 
 -   a Drosophila sechellia population, constructed from sequenced wild and lab strains downloaded from NCBI; this was treated as a parental population; for some examples these flies will be subdivided by strain source.
 
--   an offspring population from evolve & resequence experiments, in which simulans/sechellia hybrids were repeatedly backrossed to sechellia while selecting for simulans-like traits ( \@Earley2011 and unpublished followup experiments)
+-   an offspring population from evolve & resequence experiments, in which simulans/sechellia hybrids were repeatedly backcrossed to sechellia while selecting for simulans-like traits ( \@Earley2011 and unpublished followup experiments)
 
 ```{bash include=TRUE, echo = T, eval=F}
 bedtools intersect -wa -wb -a {input.par1_frq} -b  {input.par2_frq} \
@@ -169,7 +168,7 @@ Here's what's happening within the **freqShifter**:
 
 Consider again our evolve and resequence experiment. It began with a hybridization step in which one fly was drawn from a population of D. simulans; at each variant site our expectation for the alternate allele is the alternate allele frequency in our stand-in simulans population. When we pick one fly from the D. sechellia population, we'd also expect the allele frequency at each site to be that of the allele frequency in our stand-in sechellia population.
 
-In the absence of higher-order evolutionary mechanisms (eg, genome incompatibilities or meiotic drive), we'd expect the F1 generation to have, at each site, an allele frequency exactly the average of its two parents. In the absence of (net) evolutionary forces, all future offspring would also share this intermediate allele frequency, per Hardy-Weinberg. This will therefor be our reference point for understanding the allele frequencies observed experimentally. The first step then is to tare our population frequencies relative to this value.
+In the absence of higher-order evolutionary mechanisms (e.g., genome incompatibilities or meiotic drive), we'd expect the F1 generation to have, at each site, an allele frequency exactly the average of its two parents. In the absence of (net) evolutionary forces, all future offspring would also share this intermediate allele frequency, per Hardy-Weinberg. This will therefor be our reference point for understanding the allele frequencies observed experimentally. The first step then is to tare our population frequencies relative to this value.
 
 ```{r, include = TRUE, echo=FALSE, warning=FALSE}
 subsample_number <- 36
@@ -207,7 +206,7 @@ frequency_shifts.tared.mod.gg@ggplot / frequency_shifts.oriented.gg@ggplot
 
 Now that all alternate alleles are characteristic of the selected-for population, allele frequency is a measure of selected-for population character, and a positive tared value indicates more selected-for character than backcrossed-to character, relative to the ideal initial hybridization.
 
-Consider again the backcrossed-to population. Suppose there was not selection applied, just backcrossing. With each successive generation, we'd expect our hypothetical offsprings' allele frequencies to converge on those of the backcrossed-to population. We can thus place a guide on the plot which follows the tranformed allele frequency values from this population, to indicate how much our hypothetical offsprings' alleles would have to change, in order to identically resemble the backcrossed-to population. The change necessary to identically resemble the selected-for population is of equal magnitude but opposite direction, by construction. The guides for the parental populations are thus symmetric around the horizontal axis, but of variable distance from one another. The distance represents the difference in allele frequencies between the two populations at a given site, and thus how distinct the two populations are at that site; it necessarily falls in the range (0,1]. These data are not explicitly recorded in the data frame but correspond to the *center* field ∓ ½ the *AF_difference* field.
+Consider again the backcrossed-to population. Suppose there was not selection applied, just backcrossing. With each successive generation, we'd expect our hypothetical offsprings' allele frequencies to converge on those of the backcrossed-to population. We can thus place a guide on the plot which follows the tranformed allele frequency values from this population, to indicate how much our hypothetical offsprings' alleles would have to change, in order to identically resemble the backcrossed-to population. The change necessary to identically resemble the selected-for population is of equal magnitude but opposite direction, by construction. The guides for the parental populations are thus symmetric around the horizontal axis, but of variable distance from one another. The distance represents the difference in allele frequencies between the two populations at a given site, and thus how distinct the two populations are at that site; it necessarily falls in the range (0,1]. These data are not explicitly recorded in the data frame but correspond to the *center* field +/- ½ the *AF_difference* field.
 
 ```{r, include=TRUE, echo = FALSE, eval=TRUE}
 
@@ -216,7 +215,7 @@ autoplot(frequency_shifts.bg %>% head(n=subsample_number), aes(y = sign(selected
 
 Now consider a hypothetical population with no backcrossing, only selection. If the allele frequencies of the selected-for population have optimal fitness under the applied selection, then we'd expect our hypothetical offsprings' allele frequencies to converge on those of the selected-for population.
 
-However, the optimal allele configuration is not necessarily total fixation (eg, balancing or frequency-dependent selection); alternatively, the selected-for population might not be optimal. As a result, some sites can be polymorphic in the selected-for population. At such a site, our hypothetical offspring could conceivably attain a higher allele frequency than the parental population, up to fixation. In the same way, sites which are polymorphic in the backcrossed-to population allow our hypothetical offspring to attain allele frequencies lower than the parental population. These data are recorded in the *max_oriented_shift* and *min_oriented_shift* fields.
+However, the optimal allele configuration is not necessarily total fixation (e.g., balancing or frequency-dependent selection); alternatively, the selected-for population might not be optimal. As a result, some sites can be polymorphic in the selected-for population. At such a site, our hypothetical offspring could conceivably attain a higher allele frequency than the parental population, up to fixation. In the same way, sites which are polymorphic in the backcrossed-to population allow our hypothetical offspring to attain allele frequencies lower than the parental population. These data are recorded in the *max_oriented_shift* and *min_oriented_shift* fields.
 
 ```{r, include=TRUE, eval=TRUE, echo=FALSE}
 
