@@ -11,9 +11,7 @@
 #'
 #' @export
 #'
-#' @examples
-#'\dontrun{
-# lab_sechellia.filename <- system.file("extdata",
+#' @examples \dontrun{ lab_sechellia.filename <- system.file("extdata",
 # "wild_sechellia.example_data.bed", package = "PopPsiSeqR")
 # lab.bg <- import.smvshift(lab_sechellia.filename)
 # lab.bg$sechellia <- "lab"
