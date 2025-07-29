@@ -12,6 +12,7 @@
 #' @export
 #'
 #' @examples
+#'\dontrun{
 # lab_sechellia.filename <- system.file("extdata",
 # "wild_sechellia.example_data.bed", package = "PopPsiSeqR")
 # lab.bg <- import.smvshift(lab_sechellia.filename)
@@ -21,6 +22,7 @@
 # wild.bg <- import.smvshift(wild_sechellia.filename)
 # wild.bg$sechellia <- "wild"
 # sub.traction <- subTractor(lab.bg, wild.bg ,treament_name = "sechellia")
+#'}
 subTractor<- function( data_one, data_two, treament_name = "pseudoparent", field="avg_simward_AFshift", hoarder = FALSE) {
 
   treat1 <- (data_one %>% head(n=1) %>% as.data.frame())[[treament_name]]#(data_one %>% head(n=1) %>% as.data.frame() %>% select(treatment_name))[[treatment_name]]

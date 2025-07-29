@@ -14,10 +14,12 @@
 #' @export
 #'
 #' @examples
+#'\dontrun{
 #' windowed_shifts.filename <- system.file("extdata",
 #' "windowed_shifts.example_data.bed", package = "PopPsiSeqR")
 #' windowed_shifts.bg <- import.smvshift(windowed_shifts.filename)
 #' windowedFrequencyShift.plotter(windowed_shifts.bg)
+#' }
 windowedFrequencyShift.plotter <- function(windowed_shift, selected_parent="sim", backcrossed_parent = "sec", contigs = c("chr2L","chr2R","chr3L","chr3R"), main_title = "popPsiSeq results", ref_gen = "droSim1", primary_aesthetic = ggplot2::aes(), envelope_aesthetic = ggplot2::aes() , ancestral_aesthetic = ggplot2::aes()){
 
   windowed_shift.autosomal.df <- windowed_shift %>% as.data.frame() %>% dplyr::filter(.data$seqnames %in% contigs)

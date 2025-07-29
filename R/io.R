@@ -21,9 +21,11 @@
 #' @return frequency table as bedgraph
 #' @export
 #' @examples
+#'\dontrun{
 #' merged_frequencies.filename <- system.file("extdata",
 #' "merged_frequencies.example_data.tbl", package = "PopPsiSeqR")
 #' frequencies.bg <- import.freqtbl(merged_frequencies.filename)
+#'}
 import.freqtbl <- function(freqtbl_filename) {
   freqTbl.bg <- rtracklayer::import.bedGraph(freqtbl_filename)
   names(S4Vectors::mcols(freqTbl.bg)) <-  c("score", "name", "blup", "ref", "alt", "selected_parent_count", "selected_parent_alt_af", "backcrossed_parent_count", "backcrossed_parent_alt_af","offspring_count", "offspring_alt_af")
@@ -72,9 +74,11 @@ export.freqshft <- function( frequency_shifts, output_file) {
 #' @return loaded data as a bedgraph
 #' @export
 #' @examples
+#'\dontrun{
 #' windowed_shifts.filename <- system.file("extdata",
 #' "windowed_shifts.example_data.bed", package = "PopPsiSeqR")
 #' windowed_shifts.bg <- import.smvshift(windowed_shifts.filename)
+#' }
 import.smvshift <- function(filename, selected_parent = "sim", backcrossed_parent= "sec"){
     windowedFreqShift.bg <- rtracklayer::import.bedGraph(filename)
 
