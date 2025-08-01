@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{
+#'\donttest{
 #' windowed_shifts.filename <- system.file("extdata",
 #' "windowed_shifts.example_data.bed", package = "PopPsiSeqR")
 #' windowed_shifts.bg <- import.smvshift(windowed_shifts.filename)

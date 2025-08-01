@@ -21,7 +21,7 @@
 #' @return frequency table as bedgraph
 #' @export
 #' @examples
-#'\dontrun{
+#'\donttest{
 #' merged_frequencies.filename <- system.file("extdata",
 #' "merged_frequencies.example_data.tbl", package = "PopPsiSeqR")
 #' frequencies.bg <- import.freqtbl(merged_frequencies.filename)
@@ -47,7 +47,7 @@ import.freqtbl <- function(freqtbl_filename) {
 #' @return nothing
 #' @export
 #' @examples
-#'\dontrun{
+#'\donttest{
 #' merged_frequencies.filename <- system.file("extdata",
 #' "merged_frequencies.example_data.tbl", package = "PopPsiSeqR")
 #' frequencies.bg <- import.freqtbl(merged_frequencies.filename)
@@ -58,7 +58,7 @@ export.freqshft <- function( frequency_shifts, output_file) {
   #options(scipen=999)
   withr::local_options(scipen=999)
   frequency_shifts.df <- frequency_shifts %>% rtracklayer::as.data.frame() %>% dplyr::select(c("seqnames","start","end","name","score","strand","ref","alt","selected_parent_count","selected_parent_alt_af","backcrossed_parent_count","backcrossed_parent_alt_af","offspring_count","offspring_alt_af","backcrossed_parent_introg_deltaF","selected_parent_depletion_deltaF","mean_oriented_shift", "max_oriented_shift", "min_oriented_shift", "AF_difference"))
-  utils::write.table(frequency_shifts.df, file=output_file, quote=F, sep="\t", row.names=F)
+  utils::write.table(frequency_shifts.df, file=output_file, quote=FALSE, sep="\t", row.names=FALSE)
   invisible(NULL)
 }
 
@@ -74,7 +74,7 @@ export.freqshft <- function( frequency_shifts, output_file) {
 #' @return loaded data as a bedgraph
 #' @export
 #' @examples
-#'\dontrun{
+#'\donttest{
 #' windowed_shifts.filename <- system.file("extdata",
 #' "windowed_shifts.example_data.bed", package = "PopPsiSeqR")
 #' windowed_shifts.bg <- import.smvshift(windowed_shifts.filename)

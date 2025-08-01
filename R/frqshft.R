@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{
+#'\donttest{
 #' merged_frequencies.filename <- system.file("extdata",
 #' "merged_frequencies.example_data.tbl", package = "PopPsiSeqR")
 #' frequencies.bg <- import.freqtbl(merged_frequencies.filename)
